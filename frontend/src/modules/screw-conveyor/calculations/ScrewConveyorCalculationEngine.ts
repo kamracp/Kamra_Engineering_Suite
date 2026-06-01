@@ -7,6 +7,30 @@ import { motorDatabase } from "../data/motorDatabase";
 import { gearboxDatabase } from "../data/gearboxDatabase";
 import { bearingDatabase } from "../data/bearingDatabase";
 
+function calculateDesignScore(
+  warnings: number,
+  motorPower: number,
+  selectedMotorKW: number
+): number {
+  let score = 100;
+
+  if (motorPower > selectedMotorKW * 0.9) {
+    score -= 15;
+  }
+
+  score -= warnings * 5;
+
+  return Math.max(score, 0);
+}
+
+function getDesignStatus(
+  score: number
+): "SAFE" | "WARNING" | "CRITICAL" {
+  if (score >= 90) return "SAFE";
+  if (score >= 70) return "WARNING";
+  return "CRITICAL";
+}
+
 export function calculateScrewConveyor(
   input: ScrewConveyorInput
 ): ScrewConveyorResult {
@@ -53,9 +77,9 @@ export function calculateScrewConveyor(
 
   let inclinationFactor = 1;
 
-  if (inclination > 10) inclinationFactor = 0.90;
-  if (inclination > 20) inclinationFactor = 0.80;
-  if (inclination > 30) inclinationFactor = 0.70;
+  if (inclination > 10) inclinationFactor = 0.9;
+  if (inclination > 20) inclinationFactor = 0.8;
+  if (inclination > 30) inclinationFactor = 0.7;
 
   const capacityCheckTPH = Number(
     (capacityTPH * inclinationFactor).toFixed(2)
@@ -209,6 +233,22 @@ export function calculateScrewConveyor(
   }
 
   // ------------------------------------
+  // Design Score & Status
+  // ------------------------------------
+
+  const designScore = calculateDesignScore(
+    warnings.length,
+    motorPowerKW,
+    selectedMotor.powerKW
+  );
+
+  const designStatus =
+    getDesignStatus(designScore);
+
+  const warningCount =
+    warnings.length;
+
+  // ------------------------------------
   // Recommendations
   // ------------------------------------
 
@@ -236,6 +276,14 @@ export function calculateScrewConveyor(
     `Selected Bearing : ${selectedBearing.bearing}`
   );
 
+  recommendations.push(
+    `Design Score : ${designScore}/100`
+  );
+
+  recommendations.push(
+    `Design Status : ${designStatus}`
+  );
+
   // ------------------------------------
   // AI Design Review
   // ------------------------------------
@@ -261,8 +309,26 @@ export function calculateScrewConveyor(
   );
 
   designReview.push(
-    "✓ Design status: RECOMMENDED."
+    `✓ Design Score : ${designScore}/100`
   );
+
+  if (designStatus === "SAFE") {
+    designReview.push(
+      "✓ Design status: SAFE FOR OPERATION."
+    );
+  }
+
+  if (designStatus === "WARNING") {
+    designReview.push(
+      "⚠ Design status: REVIEW RECOMMENDED."
+    );
+  }
+
+  if (designStatus === "CRITICAL") {
+    designReview.push(
+      "✖ Design status: REDESIGN REQUIRED."
+    );
+  }
 
   // ------------------------------------
   // Final Result
@@ -295,5 +361,11 @@ export function calculateScrewConveyor(
     warnings,
 
     recommendations,
+
+    designScore,
+
+    designStatus,
+
+    warningCount,
   };
 }

@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 import ScrewConveyorForm from "../components/ScrewConveyorForm";
@@ -47,7 +48,8 @@ const ScrewConveyor: React.FC = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 max-w-screen-2xl mx-auto">
+
       <div className="mb-6">
         <h1 className="text-3xl font-bold">
           Screw Conveyor Engineering Suite
@@ -59,24 +61,32 @@ const ScrewConveyor: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <ScrewConveyorForm
-          input={input}
-          setInput={setInput}
-        />
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
 
-        <ScrewConveyorResults
-          result={result}
-        />
-      </div>
+        <div className="xl:col-span-1">
 
-      <div className="mt-6">
-        <button
-          onClick={handleCalculate}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg"
-        >
-          Calculate Screw Conveyor
-        </button>
+          <ScrewConveyorForm
+            input={input}
+            setInput={setInput}
+          />
+
+          <div className="mt-4">
+            <button
+              onClick={handleCalculate}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg"
+            >
+              Calculate Screw Conveyor
+            </button>
+          </div>
+
+        </div>
+
+        <div className="xl:col-span-2">
+          <ScrewConveyorResults
+            result={result}
+          />
+        </div>
+
       </div>
 
       {result && (

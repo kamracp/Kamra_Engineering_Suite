@@ -40,6 +40,16 @@ export interface ScrewConveyorResult {
   warnings: string[];
 
   recommendations: string[];
+
+  /* ==========================
+     V2.1 Professional Dashboard
+     ========================== */
+
+  designScore: number;
+
+  designStatus: "SAFE" | "WARNING" | "CRITICAL";
+
+  warningCount: number;
 }
 
 export interface MaterialProperties {
