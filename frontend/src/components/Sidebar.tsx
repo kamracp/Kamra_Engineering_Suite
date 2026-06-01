@@ -47,7 +47,19 @@ const Sidebar = () => {
           </button>
 
         </Link>
+{/* SCREW CONVEYOR */}
 
+<Link to="/screw-conveyor">
+
+  <button className="w-full flex items-center gap-3 p-4 rounded-xl bg-gray-800 hover:bg-gray-700 transition">
+
+    <Factory />
+
+    Screw Conveyor
+
+  </button>
+
+</Link>
         {/* ELECTRICAL */}
 
         <button className="w-full flex items-center gap-3 p-4 rounded-xl bg-gray-800 hover:bg-gray-700 transition">
