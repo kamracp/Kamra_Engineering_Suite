@@ -1,26 +1,150 @@
 export interface MotorData {
   powerKW: number;
-  hp: number;
+  frame: string;
+  rpm: number;
+  efficiency: number;
+  make: string;
 }
 
 export const motorDatabase: MotorData[] = [
-  { powerKW: 0.37, hp: 0.5 },
-  { powerKW: 0.55, hp: 0.75 },
-  { powerKW: 0.75, hp: 1 },
-  { powerKW: 1.1, hp: 1.5 },
-  { powerKW: 1.5, hp: 2 },
-  { powerKW: 2.2, hp: 3 },
-  { powerKW: 3, hp: 4 },
-  { powerKW: 4, hp: 5.5 },
-  { powerKW: 5.5, hp: 7.5 },
-  { powerKW: 7.5, hp: 10 },
-  { powerKW: 11, hp: 15 },
-  { powerKW: 15, hp: 20 },
-  { powerKW: 18.5, hp: 25 },
-  { powerKW: 22, hp: 30 },
-  { powerKW: 30, hp: 40 },
-  { powerKW: 37, hp: 50 },
-  { powerKW: 45, hp: 60 },
-  { powerKW: 55, hp: 75 },
-  { powerKW: 75, hp: 100 }
+  {
+    powerKW: 0.37,
+    frame: "71",
+    rpm: 1440,
+    efficiency: 72,
+    make: "ABB"
+  },
+  {
+    powerKW: 0.55,
+    frame: "80",
+    rpm: 1440,
+    efficiency: 75,
+    make: "ABB"
+  },
+  {
+    powerKW: 0.75,
+    frame: "80",
+    rpm: 1440,
+    efficiency: 78,
+    make: "ABB"
+  },
+  {
+    powerKW: 1.1,
+    frame: "90S",
+    rpm: 1440,
+    efficiency: 82,
+    make: "ABB"
+  },
+  {
+    powerKW: 1.5,
+    frame: "90L",
+    rpm: 1440,
+    efficiency: 84,
+    make: "ABB"
+  },
+  {
+    powerKW: 2.2,
+    frame: "100L",
+    rpm: 1440,
+    efficiency: 86,
+    make: "ABB"
+  },
+  {
+    powerKW: 3,
+    frame: "100L",
+    rpm: 1440,
+    efficiency: 88,
+    make: "ABB"
+  },
+  {
+    powerKW: 4,
+    frame: "112M",
+    rpm: 1440,
+    efficiency: 89,
+    make: "ABB"
+  },
+  {
+    powerKW: 5.5,
+    frame: "132S",
+    rpm: 1440,
+    efficiency: 90,
+    make: "ABB"
+  },
+  {
+    powerKW: 7.5,
+    frame: "132M",
+    rpm: 1440,
+    efficiency: 91,
+    make: "ABB"
+  },
+  {
+    powerKW: 11,
+    frame: "160M",
+    rpm: 1440,
+    efficiency: 92,
+    make: "ABB"
+  },
+  {
+    powerKW: 15,
+    frame: "160L",
+    rpm: 1440,
+    efficiency: 93,
+    make: "ABB"
+  },
+  {
+    powerKW: 22,
+    frame: "180M",
+    rpm: 1440,
+    efficiency: 94,
+    make: "ABB"
+  },
+  {
+    powerKW: 30,
+    frame: "200L",
+    rpm: 1440,
+    efficiency: 95,
+    make: "ABB"
+  },
+  {
+    powerKW: 37,
+    frame: "225S",
+    rpm: 1440,
+    efficiency: 95,
+    make: "ABB"
+  },
+  {
+    powerKW: 45,
+    frame: "225M",
+    rpm: 1440,
+    efficiency: 95,
+    make: "ABB"
+  },
+  {
+    powerKW: 55,
+    frame: "250M",
+    rpm: 1440,
+    efficiency: 96,
+    make: "ABB"
+  },
+  {
+    powerKW: 75,
+    frame: "280S",
+    rpm: 1440,
+    efficiency: 96,
+    make: "ABB"
+  },
+  {
+    powerKW: 90,
+    frame: "280M",
+    rpm: 1440,
+    efficiency: 96,
+    make: "ABB"
+  },
+  {
+    powerKW: 110,
+    frame: "315S",
+    rpm: 1440,
+    efficiency: 96,
+    make: "ABB"
+  }
 ];
