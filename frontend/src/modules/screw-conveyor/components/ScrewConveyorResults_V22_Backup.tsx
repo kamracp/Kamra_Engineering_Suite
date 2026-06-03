@@ -21,21 +21,20 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
   }
 
   const getStatusClasses = () => {
-  switch (result.designStatus) {
-    case "SAFE":
-      return "bg-green-100 text-green-800 border-green-400";
+    switch (result.designStatus) {
+      case "SAFE":
+        return "bg-green-100 text-green-800 border-green-400";
 
-    case "WARNING":
-      return "bg-yellow-100 text-yellow-800 border-yellow-400";
+      case "WARNING":
+        return "bg-yellow-100 text-yellow-800 border-yellow-400";
 
-    case "CRITICAL":
-      return "bg-red-100 text-red-800 border-red-400";
+      case "CRITICAL":
+        return "bg-red-100 text-red-800 border-red-400";
 
-    default:
-      return "bg-gray-100 text-gray-800 border-gray-400";
-  }
-};
-
+      default:
+        return "bg-gray-100 text-gray-800 border-gray-400";
+    }
+  };
 
   return (
     <div className="space-y-6 w-full overflow-x-auto">
@@ -125,67 +124,43 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
         </div>
       </div>
 <div className="bg-indigo-50 border rounded-lg p-4 text-center">
-  <div className="text-sm text-gray-600">
-    Gearbox Ratio
-  </div>
-
+  <div className="text-sm text-gray-600">Gearbox Ratio</div>
   <div className="text-2xl font-bold text-indigo-700">
     {result.gearboxRatio}
   </div>
-
-  <div className="text-sm text-gray-500">
-    :1
-  </div>
+  <div className="text-sm text-gray-500">:1</div>
 </div>
 
 <div className="bg-teal-50 border rounded-lg p-4 text-center">
-  <div className="text-sm text-gray-600">
-    Bearing Life
-  </div>
-
+  <div className="text-sm text-gray-600">Bearing Life</div>
   <div className="text-2xl font-bold text-teal-700">
     {result.bearingLifeHours > 250000
       ? ">250k"
       : result.bearingLifeHours}
   </div>
-
-  <div className="text-sm text-gray-500">
-    Hours
-  </div>
+  <div className="text-sm text-gray-500">Hours</div>
 </div>
 
 <div className="bg-yellow-50 border rounded-lg p-4 text-center">
-  <div className="text-sm text-gray-600">
-    Motor Utilization
-  </div>
-
+  <div className="text-sm text-gray-600">Motor Utilization</div>
   <div className="text-2xl font-bold text-yellow-700">
     {result.motorUtilization}%
   </div>
-
-  <div className="text-sm text-gray-500">
-    Load
-  </div>
+  <div className="text-sm text-gray-500">Load</div>
 </div>
 
 <div className="bg-red-50 border rounded-lg p-4 text-center">
-  <div className="text-sm text-gray-600">
-    Gearbox Utilization
-  </div>
-
+  <div className="text-sm text-gray-600">Gearbox Utilization</div>
   <div className="text-2xl font-bold text-red-700">
     {result.gearboxUtilization}%
   </div>
-
-  <div className="text-sm text-gray-500">
-    Load
-  </div>
+  <div className="text-sm text-gray-500">Load</div>
 </div>
       {/* ====================================== */}
       {/* STATUS BADGE + WARNING COUNTER */}
       {/* ====================================== */}
 
-      <div className="bg-gradient-to-br from-slate-800 to-slate-900 text-white shadow-2xl rounded-2xl p-6 border border-cyan-700">
+      <div className="bg-white shadow rounded-xl p-6">
 
         <div className="flex flex-wrap items-center justify-between gap-4">
 
@@ -219,7 +194,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
     Design Results
   </h2>
 
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
     <div className="bg-slate-700 rounded-lg p-3">
       <div className="text-cyan-300 text-sm">Screw Diameter</div>
@@ -263,17 +238,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
 
   </div>
 </div>
-   <div
-  className={`rounded-lg p-4 text-center ${/#getReliabilityBadgeClasses()#/}`}
->
-  <div className="text-sm">
-    Reliability Grade
-  </div>
-
-  <div className="text-3xl font-bold">
-    {result.reliabilityIndex}
-  </div>
-</div>   
+      
       {/* ====================================== */}
 {/* EQUIPMENT SELECTION */}
 {/* ====================================== */}
