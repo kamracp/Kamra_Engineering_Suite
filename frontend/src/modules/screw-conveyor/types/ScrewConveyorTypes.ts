@@ -41,15 +41,23 @@ export interface ScrewConveyorResult {
 
   recommendations: string[];
 
-  /* ==========================
-     V2.1 Professional Dashboard
-     ========================== */
-
   designScore: number;
 
   designStatus: "SAFE" | "WARNING" | "CRITICAL";
 
   warningCount: number;
+
+  gearboxRatio: number;
+
+  bearingLifeHours: number;
+
+  bearingLifeYears: number;
+
+  motorUtilization: number;
+
+  gearboxUtilization: number;
+
+  reliabilityIndex: "A+" | "A" | "B" | "C";
 }
 
 export interface MaterialProperties {

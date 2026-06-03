@@ -131,10 +131,11 @@ export function calculateConveyor(
   */
 
   const pulley =
-    calculatePulley({
-      beltWidth,
-      speed,
-    });
+   calculatePulley({
+  beltWidth,
+  speed,
+  motorPower,
+});
 
   /*
     SHAFT
@@ -152,12 +153,14 @@ export function calculateConveyor(
   */
 
   const bearing =
-    calculateBearing({
-      shaftDiameter:
-        shaft.selectedShaft,
-      bearingLoad:
-        effectiveTension / 2,
-    });
+  calculateBearing({
+    shaftDiameter:
+      shaft.selectedShaft,
+
+    effectiveTension,
+
+    speed,
+  });
 
   /*
     BELT
