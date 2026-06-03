@@ -247,7 +247,75 @@ export function calculateScrewConveyor(
 
   const warningCount =
     warnings.length;
+// ------------------------------------
+// V2.2 Engineering Analytics
+// ------------------------------------
 
+const gearboxRatio = Number(
+  (1440 / rpm).toFixed(2)
+);
+
+const motorUtilization = Number(
+  (
+    (motorPowerKW /
+      selectedMotor.powerKW) *
+    100
+  ).toFixed(2)
+);
+
+const gearboxUtilization = Number(
+  (
+    (gearboxTorqueNm /
+      selectedGearbox.maxTorqueNm) *
+    100
+  ).toFixed(2)
+);
+
+const dynamicLoadN =
+  selectedBearing.dynamicLoadKN * 1000;
+
+const equivalentLoadN = Math.max(
+  materialMass * 9.81 * 1.2,
+  1000
+);
+
+const bearingLifeHours = Number(
+  (
+    (Math.pow(
+      dynamicLoadN /
+        equivalentLoadN,
+      3
+    ) *
+      1000000) /
+    (60 * rpm)
+  ).toFixed(0)
+);
+
+const bearingLifeYears = Number(
+  (
+    bearingLifeHours / 8760
+  ).toFixed(2)
+);
+
+let reliabilityIndex:
+  | "A+"
+  | "A"
+  | "B"
+  | "C";
+
+if (
+  designScore > 95 &&
+  warningCount === 0 &&
+  bearingLifeHours > 50000
+) {
+  reliabilityIndex = "A+";
+} else if (designScore > 85) {
+  reliabilityIndex = "A";
+} else if (designScore > 70) {
+  reliabilityIndex = "B";
+} else {
+  reliabilityIndex = "C";
+}
   // ------------------------------------
   // Recommendations
   // ------------------------------------
@@ -335,37 +403,49 @@ export function calculateScrewConveyor(
   // ------------------------------------
 
   return {
-    screwDiameter,
-    rpm,
-    capacityCheckTPH,
-    motorPowerKW,
-    gearboxTorqueNm,
-    shaftDiameterMM,
-    efficiency,
+  screwDiameter,
+  rpm,
+  capacityCheckTPH,
+  motorPowerKW,
+  gearboxTorqueNm,
+  shaftDiameterMM,
+  efficiency,
 
-    selectedMotorKW:
-      selectedMotor.powerKW,
+  selectedMotorKW:
+    selectedMotor.powerKW,
 
-    selectedGearbox:
-      selectedGearbox.model,
+  selectedGearbox:
+    selectedGearbox.model,
 
-    selectedBearing:
-      selectedBearing.bearing,
+  selectedBearing:
+    selectedBearing.bearing,
 
-    flightThicknessMM,
+  flightThicknessMM,
 
-    troughThicknessMM,
+  troughThicknessMM,
 
-    designReview,
+  designReview,
 
-    warnings,
+  warnings,
 
-    recommendations,
+  recommendations,
 
-    designScore,
+  designScore,
 
-    designStatus,
+  designStatus,
 
-    warningCount,
-  };
+  warningCount,
+
+  gearboxRatio,
+
+  bearingLifeHours,
+
+  bearingLifeYears,
+
+  motorUtilization,
+
+  gearboxUtilization,
+
+  reliabilityIndex,
+};
 }
