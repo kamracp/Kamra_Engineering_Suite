@@ -37,10 +37,8 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
 };
 
 
-
-
   return (
-          <div className="space-y-6 w-full overflow-x-auto">
+    <div className="space-y-6 w-full overflow-x-auto">
 
       {/* ====================================== */}
       {/* PROFESSIONAL KPI DASHBOARD */}
@@ -50,7 +48,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
         <h2 className="text-2xl font-bold text-black mb-6">
           Screw Conveyor Performance Dashboard
         </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         
 
           <div className="bg-blue-50 border rounded-lg p-4 text-center">
@@ -124,8 +122,8 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
             </div>
           </div>
 
-        
-      
+        </div>
+      </div>
 <div className="bg-indigo-50 border rounded-lg p-4 text-center">
   <div className="text-sm text-gray-600">
     Gearbox Ratio
@@ -181,49 +179,6 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
 
   <div className="text-sm text-gray-500">
     Load
-  </div>
-</div>
-
-<div className="bg-green-50 border rounded-lg p-4 text-center">
-  <div className="text-sm text-gray-600">
-    Reliability
-  </div>
-
-  <div className="text-2xl font-bold text-green-700">
-    {result.reliabilityIndex}
-  </div>
-
-  <div className="text-sm text-gray-500">
-    Grade
-  </div>
-</div>
-
-<div className="bg-red-50 border rounded-lg p-4 text-center">
-  <div className="text-sm text-gray-600">
-    Warnings
-  </div>
-
-  <div className="text-2xl font-bold text-red-700">
-    {result.warningCount}
-  </div>
-
-  <div className="text-sm text-gray-500">
-    Active
-  </div>
-</div>
-
-<div className="bg-blue-50 border rounded-lg p-4 text-center">
-  <div className="text-sm text-gray-600">
-    Design Status
-  </div>
-
-  <div className="text-2xl font-bold text-blue-700">
-    {result.designStatus}
-  </div>
-
-  <div className="text-sm text-gray-500">
-    Status
-    </div>
   </div>
 </div>
       {/* ====================================== */}
@@ -308,7 +263,9 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
 
   </div>
 </div>
-   <div className="rounded-lg p-4 text-center bg-green-600 text-white"></div>
+   <div
+  className={`rounded-lg p-4 text-center ${/#getReliabilityBadgeClasses()#/}`}
+>
   <div className="text-sm">
     Reliability Grade
   </div>
