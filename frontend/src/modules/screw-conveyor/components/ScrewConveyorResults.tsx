@@ -19,8 +19,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
       </div>
     );
   }
-
-  const getStatusClasses = () => {
+const getStatusClasses = () => {
   switch (result.designStatus) {
     case "SAFE":
       return "bg-green-100 text-green-800 border-green-400";
@@ -35,7 +34,37 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
       return "bg-gray-100 text-gray-800 border-gray-400";
   }
 };
+  const getReliabilityClasses = () => {
+  switch (result.reliabilityIndex) {
+    case "A+":
+      return "bg-green-600 text-white";
 
+    case "A":
+      return "bg-blue-600 text-white";
+
+    case "B":
+      return "bg-yellow-500 text-black";
+
+    default:
+      return "bg-red-600 text-white";
+  }
+};
+
+
+  
+  
+  
+ 
+const engineeringHealthScore = Math.round(
+  (result.designScore +
+    (result.reliabilityIndex === "A+"
+      ? 100
+      : result.reliabilityIndex === "A"
+      ? 90
+      : result.reliabilityIndex === "B"
+      ? 75
+      : 50)) / 2
+);
 
 
 
@@ -46,14 +75,14 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
       {/* PROFESSIONAL KPI DASHBOARD */}
       {/* ====================================== */}
 
-      <div className="bg-white shadow rounded-xl p-6">
-        <h2 className="text-2xl font-bold text-black mb-6">
-          Screw Conveyor Performance Dashboard
+      <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl rounded-2xl p-6 border border-cyan-700">
+        <h2 className="text-2xl font-bold text-cyan-300 mb-6">
+          Screw Conveyor Executive Performance Dashboard
         </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
         
 
-          <div className="bg-blue-50 border rounded-lg p-4 text-center">
+          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center hover:shadow-xl transition-all">
             <div className="text-sm text-gray-600">
               Screw Diameter
             </div>
@@ -67,7 +96,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
             </div>
           </div>
 
-          <div className="bg-green-50 border rounded-lg p-4 text-center">
+          <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
             <div className="text-sm text-gray-600">
               RPM
             </div>
@@ -81,7 +110,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
             </div>
           </div>
 
-          <div className="bg-purple-50 border rounded-lg p-4 text-center">
+          <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
             <div className="text-sm text-gray-600">
               Motor
             </div>
@@ -95,7 +124,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
             </div>
           </div>
 
-          <div className="bg-orange-50 border rounded-lg p-4 text-center">
+          <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
             <div className="text-sm text-gray-600">
               Torque
             </div>
@@ -109,7 +138,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
             </div>
           </div>
 
-          <div className="bg-cyan-50 border rounded-lg p-4 text-center">
+          <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
             <div className="text-sm text-gray-600">
               Design Score
             </div>
@@ -126,7 +155,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
 
         
       
-<div className="bg-indigo-50 border rounded-lg p-4 text-center">
+<div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
   <div className="text-sm text-gray-600">
     Gearbox Ratio
   </div>
@@ -140,7 +169,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
   </div>
 </div>
 
-<div className="bg-teal-50 border rounded-lg p-4 text-center">
+<div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
   <div className="text-sm text-gray-600">
     Bearing Life
   </div>
@@ -156,7 +185,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
   </div>
 </div>
 
-<div className="bg-yellow-50 border rounded-lg p-4 text-center">
+<div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
   <div className="text-sm text-gray-600">
     Motor Utilization
   </div>
@@ -170,7 +199,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
   </div>
 </div>
 
-<div className="bg-red-50 border rounded-lg p-4 text-center">
+<div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
   <div className="text-sm text-gray-600">
     Gearbox Utilization
   </div>
@@ -184,21 +213,25 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
   </div>
 </div>
 
-<div className="bg-green-50 border rounded-lg p-4 text-center">
+<div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
   <div className="text-sm text-gray-600">
     Reliability
   </div>
 
-  <div className="text-2xl font-bold text-green-700">
-    {result.reliabilityIndex}
-  </div>
+  <div
+  className={`text-xl font-bold px-4 py-2 rounded-lg inline-block ${getReliabilityClasses()}`}
+>
+  {result.reliabilityIndex}
+</div>
+
+
 
   <div className="text-sm text-gray-500">
     Grade
   </div>
 </div>
 
-<div className="bg-red-50 border rounded-lg p-4 text-center">
+<div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
   <div className="text-sm text-gray-600">
     Warnings
   </div>
@@ -212,19 +245,59 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
   </div>
 </div>
 
-<div className="bg-blue-50 border rounded-lg p-4 text-center">
+<div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
   <div className="text-sm text-gray-600">
     Design Status
   </div>
 
-  <div className="text-2xl font-bold text-blue-700">
-    {result.designStatus}
-  </div>
+ <div
+  className={`text-lg font-bold px-4 py-2 rounded-lg inline-block ${
+    result.designStatus === "SAFE"
+      ? "bg-green-600 text-white"
+      : result.designStatus === "WARNING"
+      ? "bg-yellow-500 text-black"
+      : "bg-red-600 text-white"
+  }`}
+>
+  {result.designStatus}
+</div>
 
   <div className="text-sm text-gray-500">
     Status
     </div>
   </div>
+</div>
+<div className="bg-gradient-to-r from-cyan-600 to-blue-700 text-white rounded-xl p-6 shadow-xl mb-6">
+
+  <div className="text-sm uppercase tracking-wider">
+    Engineering Health Score
+  </div>
+
+  <div className="text-5xl font-bold mt-2">
+    {engineeringHealthScore}%
+  </div>
+
+  <div className="w-full bg-cyan-900 rounded-full h-5 mt-4 overflow-hidden">
+    <div
+      className="bg-white h-5 rounded-full transition-all duration-700"
+      style={{ width: `${engineeringHealthScore}%` }}
+    />
+  </div>
+
+  <div className="mt-4 text-cyan-100 font-semibold">
+    {engineeringHealthScore >= 95
+      ? "Excellent Engineering Design"
+      : engineeringHealthScore >= 85
+      ? "Good Engineering Design"
+      : engineeringHealthScore >= 70
+      ? "Acceptable Design"
+      : "Requires Engineering Review"}
+  </div>
+
+  <div className="mt-2 text-cyan-100">
+    Executive Performance Index
+  </div>
+
 </div>
       {/* ====================================== */}
       {/* STATUS BADGE + WARNING COUNTER */}
@@ -308,14 +381,7 @@ const ScrewConveyorResults: React.FC<Props> = ({ result }) => {
 
   </div>
 </div>
-   <div className="rounded-lg p-4 text-center bg-green-600 text-white"></div>
-  <div className="text-sm">
-    Reliability Grade
-  </div>
-
-  <div className="text-3xl font-bold">
-    {result.reliabilityIndex}
-  </div>
+   
 </div>   
       {/* ====================================== */}
 {/* EQUIPMENT SELECTION */}
