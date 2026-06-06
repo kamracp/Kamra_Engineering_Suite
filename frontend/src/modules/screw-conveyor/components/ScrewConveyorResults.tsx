@@ -49,7 +49,21 @@ const getStatusClasses = () => {
       return "bg-red-600 text-white";
   }
 };
+const getReliabilityText = () => {
+  switch (result.reliabilityIndex) {
+    case "A+":
+      return "Excellent";
 
+    case "A":
+      return "Good";
+
+    case "B":
+      return "Acceptable";
+
+    default:
+      return "Needs Review";
+  }
+};
 
   
   
@@ -224,6 +238,9 @@ const engineeringHealthScore = Math.round(
   {result.reliabilityIndex}
 </div>
 
+<div className="text-sm mt-2 font-semibold text-gray-300">
+  {getReliabilityText()}
+</div>
 
 
   <div className="text-sm text-gray-500">
@@ -240,9 +257,11 @@ const engineeringHealthScore = Math.round(
     {result.warningCount}
   </div>
 
-  <div className="text-sm text-gray-500">
-    Active
-  </div>
+  <div className="text-sm font-semibold text-red-300 mt-2">
+  {result.warningCount === 0
+    ? "No Issues"
+    : `${result.warningCount} Issues Found`}
+</div>
 </div>
 
 <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
@@ -394,28 +413,38 @@ const engineeringHealthScore = Math.round(
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-    <div className="bg-slate-700 rounded-lg p-3">
-      <div className="text-yellow-300 text-sm">Selected Motor</div>
+    <div className="bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all">
+      <div className="text-yellow-300 text-sm uppercase tracking-wide">
+  ⚙ Motor Package
+</div>
       <div className="text-xl font-bold">{result.selectedMotorKW} kW</div>
     </div>
 
-    <div className="bg-slate-700 rounded-lg p-3">
-      <div className="text-yellow-300 text-sm">Selected Gearbox</div>
+    <div className="bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all">
+      <div className="text-yellow-300 text-sm uppercase tracking-wide">
+  ⚙ Gearbox Package
+</div>
       <div className="text-xl font-bold">{result.selectedGearbox}</div>
     </div>
 
-    <div className="bg-slate-700 rounded-lg p-3">
-      <div className="text-yellow-300 text-sm">Selected Bearing</div>
+    <div className="bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all">
+      <div className="text-yellow-300 text-sm uppercase tracking-wide">
+  ⚙ Bearing Package
+</div>
       <div className="text-xl font-bold">{result.selectedBearing}</div>
     </div>
 
-    <div className="bg-slate-700 rounded-lg p-3">
-      <div className="text-yellow-300 text-sm">Flight Thickness</div>
+    <div className="bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all">
+      <div className="text-yellow-300 text-sm uppercase tracking-wide">
+  ⚙ Flight Design
+</div>
       <div className="text-xl font-bold">{result.flightThicknessMM} mm</div>
     </div>
 
-    <div className="bg-slate-700 rounded-lg p-3">
-      <div className="text-yellow-300 text-sm">Trough Thickness</div>
+    <div className="bg-slate-800 border border-slate-600 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all">
+      <div className="text-yellow-300 text-sm uppercase tracking-wide">
+  ⚙ Trough Design
+</div>
       <div className="text-xl font-bold">{result.troughThicknessMM} mm</div>
     </div>
 
@@ -426,13 +455,22 @@ const engineeringHealthScore = Math.round(
       {/* ====================================== */}
 
       <div className="bg-green-50 text-black border border-green-300 rounded-xl p-6">
-        <h2 className="text-xl font-bold text-green-700 mb-4">
-          AI Design Review
-        </h2>
+        <h2 className="text-xl font-bold text-green-700 mb-2">
+  🤖 AI Engineering Review
+</h2>
+
+<p className="text-sm text-gray-600 mb-4">
+  Automated Engineering Assessment Based on Current Design Inputs
+</p>
 
         <ul className="list-disc ml-6 space-y-2">
           {result.designReview.map((item, index) => (
-            <li key={index}>{item}</li>
+           <li
+  key={index}
+  className="bg-white rounded-lg p-3 shadow-sm border border-green-200"
+>
+  ✓ {item}
+</li> 
           ))}
         </ul>
       </div>
