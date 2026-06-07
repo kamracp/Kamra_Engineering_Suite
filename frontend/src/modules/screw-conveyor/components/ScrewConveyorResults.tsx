@@ -89,8 +89,8 @@ const engineeringHealthScore = Math.round(
       {/* PROFESSIONAL KPI DASHBOARD */}
       {/* ====================================== */}
 
-      <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl rounded-2xl p-6 border border-cyan-700">
-        <h2 className="text-2xl font-bold text-cyan-300 mb-6">
+      <div className="bg-white shadow-xl rounded-2xl p-6 border border-slate-200">
+        <h2 className="text-2xl font-bold text-slate-800 mb-6">
           Screw Conveyor Executive Performance Dashboard
         </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
