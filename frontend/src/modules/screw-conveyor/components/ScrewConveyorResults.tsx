@@ -110,7 +110,7 @@ const engineeringHealthScore = Math.round(
             </div>
           </div>
 
-          <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
+   <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center hover:shadow-xl transition-all">      
             <div className="text-sm text-gray-600">
               RPM
             </div>
@@ -124,7 +124,7 @@ const engineeringHealthScore = Math.round(
             </div>
           </div>
 
-          <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
+       <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center hover:shadow-xl transition-all">   
             <div className="text-sm text-gray-600">
               Motor
             </div>
@@ -138,7 +138,7 @@ const engineeringHealthScore = Math.round(
             </div>
           </div>
 
-          <div className="bg-slate-700 border border-slate-600 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center">
+        <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center shadow-lg min-h-[120px] flex flex-col justify-center hover:shadow-xl transition-all"> 
             <div className="text-sm text-gray-600">
               Torque
             </div>

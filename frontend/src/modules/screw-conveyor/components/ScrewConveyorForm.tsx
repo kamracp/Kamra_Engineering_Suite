@@ -25,10 +25,14 @@ const ScrewConveyorForm: React.FC<Props> = ({
 
       <div className="space-y-6">
 
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+
+  
+
         {/* MATERIAL PROPERTIES */}
 
-        <div className="bg-slate-50 border rounded-xl p-5">
-          <h3 className="text-lg font-bold text-slate-800 mb-4">
+       <div className="bg-slate-50 border rounded-xl p-5 h-full shadow-sm"> 
+          <h3 className="text-lg font-bold tracking-wide text-slate-800 mb-4 border-b pb-2">
             📦 MATERIAL PROPERTIES
           </h3>
 
@@ -79,7 +83,7 @@ const ScrewConveyorForm: React.FC<Props> = ({
   <input
     type="number"
     readOnly
-    className="w-full border rounded p-2 bg-slate-100 text-black"
+    className="w-full border border-blue-200 rounded-lg p-2 bg-blue-50 text-black font-semibold"
     value={input.bulkDensity}
   />
 </div>
@@ -91,7 +95,7 @@ const ScrewConveyorForm: React.FC<Props> = ({
               <input
                 type="number"
                 step="0.01"
-                className="w-full border rounded p-2 bg-white text-black"
+                className="w-full border border-slate-300 rounded-lg p-2 bg-white text-black"
                 value={input.fillFactor}
                 onChange={(e) =>
                   setInput({
@@ -107,8 +111,8 @@ const ScrewConveyorForm: React.FC<Props> = ({
 
         {/* PROCESS REQUIREMENTS */}
 
-        <div className="bg-slate-50 border rounded-xl p-5">
-          <h3 className="text-lg font-bold text-slate-800 mb-4">
+     <div className="bg-slate-50 border rounded-xl p-5 h-full shadow-sm">   
+          <h3 className="text-lg font-bold tracking-wide text-slate-800 mb-4 border-b pb-2">
             ⚡ PROCESS REQUIREMENTS
           </h3>
 
@@ -174,7 +178,7 @@ const ScrewConveyorForm: React.FC<Props> = ({
         {/* MECHANICAL PARAMETERS */}
 
         <div className="bg-slate-50 border rounded-xl p-5">
-          <h3 className="text-lg font-bold text-slate-800 mb-4">
+          <h3 className="text-lg font-bold tracking-wide text-slate-800 mb-4 border-b pb-2">
             ⚙ MECHANICAL PARAMETERS
           </h3>
 
